@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637774394809943442
-    m_Hash: 238244261
+      ticks: 637774467320388712
+    m_Hash: 1925581752
   m_LockFileStatus:
     m_FilePath: H:/Projects/Repos/2D Platformer/2d Platformer/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637774394854614847
-    m_Hash: 201114752
+      ticks: 637774467320398972
+    m_Hash: 3207447393
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
