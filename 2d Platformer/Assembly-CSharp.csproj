@@ -47,10 +47,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
-     <Compile Include="Assets\Scripts\GameManager\InputManager.cs" />
-     <Compile Include="Assets\Scripts\GameManager\AudioManager.cs" />
-     <Compile Include="Assets\TestManager.cs" />
+     <Compile Include="Assets\Scripts\Game Manager Scripts\TestManager.cs" />
+     <Compile Include="Assets\Scripts\Game Manager Scripts\AudioManager.cs" />
+     <Compile Include="Assets\Scripts\Game Manager Scripts\InputManager.cs" />
+     <Compile Include="Assets\Scripts\Game Manager Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Player Scripts\PlayerController.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
