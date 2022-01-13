@@ -20,12 +20,28 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            CreatePlayer();
+            SpawnPlayer();
         }
-        
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            LoadNextScene();
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            LoadPreviousScene();
+        }
+
     }
-    private void CreatePlayer()
+    private void SpawnPlayer()
     {        
-        testManager.CreatePlayer();
+        testManager.SpawnPlayer();
+    }
+    private void LoadNextScene()
+    {
+        testManager.LoadNextScene();
+    }
+    private void LoadPreviousScene()
+    {
+        testManager.LoadPreviousScene();
     }
 }

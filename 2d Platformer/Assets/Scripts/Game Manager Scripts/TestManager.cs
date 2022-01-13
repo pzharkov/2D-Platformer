@@ -6,6 +6,7 @@ public class TestManager : MonoBehaviour
 {
     [SerializeField]
     private GameManager gameManager = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +21,16 @@ public class TestManager : MonoBehaviour
     {
         
     }
-    public void CreatePlayer()
+    public void SpawnPlayer()
     {
-        gameManager.CreatePlayer(new Vector2(0f, 0f));
+        gameManager.SpawnPlayer();
+    }
+    public void LoadNextScene()
+    {
+        gameManager.LoadNextScene();
+    }
+    public void LoadPreviousScene()
+    {
+        gameManager.LoadPreviousScene();
     }
 }

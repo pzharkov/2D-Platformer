@@ -8,26 +8,53 @@ public class GameManager : MonoBehaviour
     private GameObject playerPrefab = null;
     [SerializeField]
     private GameObject playerObject = null;
+    [SerializeField]
+    private SceneController sceneController = null;
+    [SerializeField]
+    private LevelManager activeLevelManager = null;
 
-    // Start is called before the first frame update
+
     void Start()
-    {
-        
+    {        
+        FindSceneController();
+
+        if (sceneController.GetCurrentScene() == 0)
+        {
+            LoadNextScene();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void CreatePlayer(Vector2 position)
+    public void SpawnPlayer()
     {
         if (playerObject != null)
         {
             Destroy(playerObject);
         }
 
-        playerObject = Instantiate(playerPrefab, position, Quaternion.identity);
+        playerObject = Instantiate(playerPrefab, activeLevelManager.PlayerSpawnPosition(), Quaternion.identity);
     }
+
+    public void LoadNextScene()
+    {
+        sceneController.LoadScene(sceneController.GetCurrentScene() + 1);        
+    }
+    public void LoadPreviousScene()
+    {
+        sceneController.LoadScene(sceneController.GetCurrentScene() - 1);        
+    }
+    
+    private void FindLevelManager()
+    {
+        activeLevelManager = FindObjectOfType<LevelManager>();
+    }
+
+    private void FindSceneController()
+    {
+        sceneController = GetComponent<SceneController>();
+    }
+    public void SceneLoaded()
+    {
+        FindLevelManager();
+    }
+
 }
