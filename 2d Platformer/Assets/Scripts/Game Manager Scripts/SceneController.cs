@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
-{
-    private int sceneIndex = 0;
+{    
     private int sceneCount = 0;
     private GameManager gameManager = null;
 
@@ -16,7 +15,6 @@ public class SceneController : MonoBehaviour
             gameManager = GetComponent<GameManager>();
         }
         sceneCount = SceneManager.sceneCountInBuildSettings;
-        sceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
     public void LoadScene(int _index)
@@ -40,12 +38,11 @@ public class SceneController : MonoBehaviour
             yield return null;
         }
         
-        sceneIndex = _index;        
         gameManager.SceneLoaded();
     }
 
-    public int GetCurrentScene()
+    public int CurrentScene()
     {
-        return sceneIndex;
+        return SceneManager.GetActiveScene().buildIndex;
     }
 }

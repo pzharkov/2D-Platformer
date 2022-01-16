@@ -15,13 +15,9 @@ public class GameManager : MonoBehaviour
 
 
     void Start()
-    {        
+    {
+        LoadResources();
         FindSceneController();
-
-        if (sceneController.GetCurrentScene() == 0)
-        {
-            LoadNextScene();
-        }
     }
 
     public void SpawnPlayer()
@@ -36,11 +32,11 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextScene()
     {
-        sceneController.LoadScene(sceneController.GetCurrentScene() + 1);        
+        sceneController.LoadScene(sceneController.CurrentScene() + 1);        
     }
     public void LoadPreviousScene()
     {
-        sceneController.LoadScene(sceneController.GetCurrentScene() - 1);        
+        sceneController.LoadScene(sceneController.CurrentScene() - 1);        
     }
     
     private void FindLevelManager()
@@ -51,10 +47,22 @@ public class GameManager : MonoBehaviour
     private void FindSceneController()
     {
         sceneController = GetComponent<SceneController>();
+
+        // check if in Zero (pre-load scene) and load next scene if so
+        if (sceneController.CurrentScene() == 0)
+        {
+            LoadNextScene();
+        }
+
     }
     public void SceneLoaded()
     {
         FindLevelManager();
+    }
+
+    private void LoadResources()
+    {
+        playerPrefab = Resources.Load<GameObject>("Prefabs/Player");
     }
 
 }
