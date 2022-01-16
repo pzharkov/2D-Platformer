@@ -68,7 +68,11 @@ public class InputManager : MonoBehaviour
     }
     private void ReadPlayerInput()
     {
-
+        if (gameManager.PlayerObject != null)
+        {
+            int _horizontalInput = (int)Input.GetAxis("Horizontal");
+            gameManager.PlayerObject.GetComponent<PlayerController>().HorizontalMovement(_horizontalInput);
+        }
     }
 
     private void SpawnPlayer()
