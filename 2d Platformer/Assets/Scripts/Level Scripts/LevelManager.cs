@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject playerSpawnObject;
+    private GameObject playerSpawnObject = null;
 
     void Start()
     {
