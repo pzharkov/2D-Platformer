@@ -32,17 +32,20 @@ public class InputManager : MonoBehaviour
         {
             ReadTestingInput();
         }
-        if (menuMode)
-        {
-            ReadMenuInput();
-        }
         else
         {
-            if (gameManager.PlayerHasControl())
+            if (menuMode)
             {
-                ReadPlayerInput();
+                ReadMenuInput();
             }
-        }        
+            else
+            {
+                if (gameManager.PlayerHasControl())
+                {
+                    ReadPlayerInput();
+                }
+            }
+        }
     }
 
     private void ReadTestingInput()
@@ -62,7 +65,6 @@ public class InputManager : MonoBehaviour
     }
     private void ReadMenuInput()
     {
-
     }
     private void ReadPlayerInput()
     {
