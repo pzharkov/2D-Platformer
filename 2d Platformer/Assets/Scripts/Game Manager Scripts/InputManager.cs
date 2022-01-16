@@ -40,7 +40,7 @@ public class InputManager : MonoBehaviour
             }
             else
             {
-                if (gameManager.PlayerHasControl())
+                if (gameManager.PlayerHasControl)
                 {
                     ReadPlayerInput();
                 }
@@ -68,6 +68,7 @@ public class InputManager : MonoBehaviour
     }
     private void ReadPlayerInput()
     {
+
     }
 
     private void SpawnPlayer()

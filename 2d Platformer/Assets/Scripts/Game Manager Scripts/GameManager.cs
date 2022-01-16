@@ -3,31 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
-{
-    [SerializeField]
-    private GameObject playerPrefab = null;
-    [SerializeField]
-    private GameObject playerObject = null;
+{    
+    private GameObject playerPrefab = null;    
+    public GameObject PlayerObject { get; private set; }
     [SerializeField]
     private SceneController sceneController = null;
     [SerializeField]
-    private LevelManager activeLevelManager = null;
-    private bool playerHasControl;
+    private LevelManager activeLevelManager = null;    
+    public bool PlayerHasControl { get; private set; }
 
     void Start()
     {
         LoadResources();
         FindSceneController();
+
+        // temp for testing
+        PlayerHasControl = true;
     }
 
     public void SpawnPlayer()
     {
-        if (playerObject != null)
+        if (PlayerObject != null)
         {
-            Destroy(playerObject);
+            Destroy(PlayerObject);
         }
 
-        playerObject = Instantiate(playerPrefab, activeLevelManager.PlayerSpawnPosition(), Quaternion.identity);
+        PlayerObject = Instantiate(playerPrefab, activeLevelManager.PlayerSpawnPosition(), Quaternion.identity);
     }
 
     public void LoadNextScene()
@@ -59,12 +60,6 @@ public class GameManager : MonoBehaviour
     {
         FindLevelManager();
     }
-
-    public bool PlayerHasControl()
-    {
-        return playerHasControl;
-    }
-
     private void LoadResources()
     {
         playerPrefab = Resources.Load<GameObject>("Prefabs/Player");
