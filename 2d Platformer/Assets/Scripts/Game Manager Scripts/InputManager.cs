@@ -5,7 +5,10 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     [SerializeField]
-    private TestManager testManager;
+    private TestManager testManager = null;
+    private GameManager gameManager = null;
+    private bool testingMode;
+    private bool menuMode;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,10 +16,36 @@ public class InputManager : MonoBehaviour
         {
             testManager = gameObject.GetComponent<TestManager>();
         }
+        if (gameManager == null)
+        {
+            gameManager = gameObject.GetComponent<GameManager>();
+        }
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            testingMode = !testingMode;
+        }
+        if (testingMode)
+        {
+            ReadTestingInput();
+        }
+        if (menuMode)
+        {
+            ReadMenuInput();
+        }
+        else
+        {
+            if (gameManager.PlayerHasControl())
+            {
+                ReadPlayerInput();
+            }
+        }        
+    }
+
+    private void ReadTestingInput()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -30,8 +59,15 @@ public class InputManager : MonoBehaviour
         {
             LoadPreviousScene();
         }
+    }
+    private void ReadMenuInput()
+    {
 
     }
+    private void ReadPlayerInput()
+    {
+    }
+
     private void SpawnPlayer()
     {        
         testManager.SpawnPlayer();
@@ -44,4 +80,5 @@ public class InputManager : MonoBehaviour
     {
         testManager.LoadPreviousScene();
     }
+
 }

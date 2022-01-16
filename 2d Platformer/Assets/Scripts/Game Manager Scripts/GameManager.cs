@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private SceneController sceneController = null;
     [SerializeField]
     private LevelManager activeLevelManager = null;
-
+    private bool playerHasControl;
 
     void Start()
     {
@@ -58,6 +58,11 @@ public class GameManager : MonoBehaviour
     public void SceneLoaded()
     {
         FindLevelManager();
+    }
+
+    public bool PlayerHasControl()
+    {
+        return playerHasControl;
     }
 
     private void LoadResources()
