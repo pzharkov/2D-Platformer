@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour
     private GameManager gameManager = null;
     private bool testingMode;
     private bool menuMode;
+    private PlayerController playerController = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,8 +72,17 @@ public class InputManager : MonoBehaviour
     {
         if (gameManager.PlayerObject != null)
         {
-            int _horizontalInput = (int)Input.GetAxis("Horizontal");
-            gameManager.PlayerObject.GetComponent<PlayerController>().HorizontalMovement(_horizontalInput);
+            int _horizontalInput = (int)Input.GetAxisRaw("Horizontal");
+            playerController.HorizontalMovement(_horizontalInput);
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                playerController.TryingToJump(true);
+            }
+            if (Input.GetButtonUp("Jump"))
+            {
+                playerController.TryingToJump(false);
+            }
         }
     }
 
@@ -88,4 +99,11 @@ public class InputManager : MonoBehaviour
         testManager.LoadPreviousScene();
     }
 
+    public void NewPlayerReference()
+    {
+        if (gameManager.PlayerObject != null)
+        {
+            playerController = gameManager.PlayerObject.GetComponent<PlayerController>();
+        }
+    }
 }

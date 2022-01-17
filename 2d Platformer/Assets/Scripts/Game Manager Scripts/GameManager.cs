@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
         }
 
         PlayerObject = Instantiate(playerPrefab, activeLevelManager.PlayerSpawnPosition(), Quaternion.identity);
+        GetComponent<InputManager>().NewPlayerReference();
     }
 
     public void LoadNextScene()
