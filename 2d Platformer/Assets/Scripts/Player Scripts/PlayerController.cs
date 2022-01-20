@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Vector2 movementVector = new Vector2(0f, 0f);
+    private JumpSettings jumpSettings = null;
     private Rigidbody2D rb = null;
     [SerializeField]
     private float speed = 2f;
-    [SerializeField]
-    private float jumpTime = 1f;
-    [SerializeField]
-    private float jumpForce = 5f;
-    private bool isJumping = false;
-    private IEnumerator coroutine = null;
-    
+    [HideInInspector]
+    public Vector2 movementVector = new Vector2(0f, 0f);
+    [HideInInspector]
+    public bool isJumping = false;
 
-    // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        movementVector = rb.velocity;
+        PhysicsSetup();
+        SettingsReference();        
     }
 
     private void FixedUpdate()
@@ -33,13 +29,9 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(movementVector.x, rb.velocity.y);
         }
-        
-        
     }
     void Update()
     {
-        Debug.Log(rb.velocity);
-        Debug.Log(isJumping);
     }
 
     public void HorizontalMovement(int input)
@@ -48,53 +40,33 @@ public class PlayerController : MonoBehaviour
     }
     public void TryingToJump(bool trying)
     {
-        //check if grounded
         if (trying)
         {
-            if (!isJumping)
-            {                
-                Jump();
-            }
+            jumpSettings.TryToJump();
         }
         else
         {
-            if (isJumping)
-            {
-                Fall();
-            }            
+            jumpSettings.TryToFall();
         }
-        
-        //jump
     }
-    
-    IEnumerator JumpCoroutine()
+    private void PhysicsSetup()
     {
-        float _remainingTime = jumpTime;
-        
-        while (_remainingTime > 0)
+        rb = GetComponent<Rigidbody2D>();
+        if (rb == null)
         {
-            _remainingTime -= Time.deltaTime;
-            movementVector.y = jumpForce * _remainingTime / jumpTime;
-
-            yield return null;
+            Debug.Log("PhysicsSetup() Error in " + this.name + ": RigidBody2D component on " + gameObject.name + " was not found!");
         }
-
-        isJumping = false;
-        movementVector.y = 0f;    
-    }
-    private void Jump()
-    {
-        isJumping = true;
-        coroutine = JumpCoroutine();
-        StartCoroutine(coroutine);
-    }
-    private void Fall()
-    {
-        isJumping = false;
-        if (coroutine != null)
+        else
         {
-            StopCoroutine(coroutine);
-            rb.velocity = new Vector2(movementVector.x, 0f);
+            movementVector = rb.velocity;
+        }        
+    }
+    private void SettingsReference()
+    {
+        jumpSettings = GetComponent<JumpSettings>();
+        if (jumpSettings == null)
+        {
+            Debug.Log("SettingsReference() Error in " + this.name + ": JumpSettings component on " + gameObject.name + " was not found!");
         }
-    }    
+    }
 }
