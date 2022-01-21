@@ -14,6 +14,8 @@ public class JumpSettings : MonoBehaviour
     private float jumpBuffer = 0f;
     [SerializeField]
     private float coyoteeTime = 0f;
+    [SerializeField]
+    private float fallGravityScale = 0f;
     private bool canJump = false;
     private bool isTryingToJump = false;
     private IEnumerator jumpCoroutine = null;
@@ -78,6 +80,7 @@ public class JumpSettings : MonoBehaviour
     public void Landed()
     {
         remainingJumps = maxNumberOfJumps;
+        rb.gravityScale = 1;
     }
 
     private void Jump()
@@ -94,11 +97,15 @@ public class JumpSettings : MonoBehaviour
     private void Fall()
     {
         controller.isJumping = false;
+        controller.movementVector.y = 0f;
 
         if (jumpCoroutine != null)
         {
             StopCoroutine(jumpCoroutine);
-            rb.velocity = new Vector2(controller.movementVector.x, 0f);
+        }
+        if (!groundCheck.isGrounded)
+        {
+            rb.gravityScale = fallGravityScale;
         }
     }
     IEnumerator JumpCoroutine()
@@ -115,8 +122,7 @@ public class JumpSettings : MonoBehaviour
             yield return null;
         }
 
-        controller.isJumping = false;
-        controller.movementVector.y = 0f;
+        TryToFall();
     }
 
     IEnumerator CoyoteeTimeCoroutine()

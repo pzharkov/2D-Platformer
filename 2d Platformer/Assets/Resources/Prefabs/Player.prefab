@@ -178,7 +178,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 2
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: bea64eebc81a428469a0d75c9d99e25f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -215,6 +215,7 @@ MonoBehaviour:
   jumpForce: 10
   jumpBuffer: 0.2
   coyoteeTime: 0.2
+  fallGravityScale: 3
   maxNumberOfJumps: 1
 --- !u!1 &8273731411599829488
 GameObject:
