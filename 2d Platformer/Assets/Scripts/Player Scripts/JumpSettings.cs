@@ -37,7 +37,7 @@ public class JumpSettings : MonoBehaviour
     {
         if (!controller.isJumping)
         {
-            if (groundCheck.isGrounded || canJump || remainingJumps > 0)
+            if (groundCheck.isGrounded || canJump || remainingJumps > 1)
             {
                 Jump();
             }
@@ -64,6 +64,8 @@ public class JumpSettings : MonoBehaviour
         {
             if (!controller.isJumping)
             {
+                Fall();
+
                 coyoteeTimeCoroutine = CoyoteeTimeCoroutine();
                 StartCoroutine(coyoteeTimeCoroutine);
             }            
@@ -96,20 +98,24 @@ public class JumpSettings : MonoBehaviour
     }
     private void Fall()
     {
-        controller.isJumping = false;
-        controller.movementVector.y = 0f;
-
         if (jumpCoroutine != null)
         {
-            StopCoroutine(jumpCoroutine);
+            StopCoroutine(jumpCoroutine);            
         }
         if (!groundCheck.isGrounded)
         {
             rb.gravityScale = fallGravityScale;
         }
+
+        // zero vertical speed
+        controller.movementVector.y = 0f;
+        // call sleep-wakeup to stop fixed update from carrying over rb.velocity.y from previous update due to Unity call order.
+        rb.Sleep();
+        rb.WakeUp();
+        controller.isJumping = false;
     }
     IEnumerator JumpCoroutine()
-    {
+    {        
         float _remainingTime = jumpTime;
         remainingJumps -= 1;
 
