@@ -5,14 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {    
-    private int sceneCount = 0;
+    private int sceneCount = 0;    
+    private int lastPlayedSceneIndex = 2; // set to 2 (Main Menu scene) by default
     private GameManager gameManager = null;
 
-    private void Start()
+    void Start()
     {
         if (gameManager == null)
         {
-            gameManager = GetComponent<GameManager>();
+            gameManager = GetComponent<GameManager>();            
         }
         sceneCount = SceneManager.sceneCountInBuildSettings;
     }
@@ -21,6 +22,8 @@ public class SceneController : MonoBehaviour
     {
         if (_index > 0 && _index < sceneCount)
         {
+            lastPlayedSceneIndex = CurrentScene();
+            Debug.Log("Last Played Scene Index =  " + lastPlayedSceneIndex);
             StartCoroutine(LoadSceneByIndex(_index));
         }
         else
@@ -44,5 +47,9 @@ public class SceneController : MonoBehaviour
     public int CurrentScene()
     {
         return SceneManager.GetActiveScene().buildIndex;
+    }
+    public int LastPlayedScene()
+    {
+        return lastPlayedSceneIndex;
     }
 }

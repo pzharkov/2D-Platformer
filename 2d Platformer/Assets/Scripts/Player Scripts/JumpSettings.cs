@@ -17,7 +17,6 @@ public class JumpSettings : MonoBehaviour
     [SerializeField]
     private float fallGravityScale = 0f;
     private bool canJump = false;
-    private bool isTryingToJump = false;
     private IEnumerator jumpCoroutine = null;
     private IEnumerator coyoteeTimeCoroutine = null;
     private IEnumerator jumpBufferCoroutine = null;

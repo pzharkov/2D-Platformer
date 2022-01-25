@@ -20,18 +20,25 @@ public class GameManager : MonoBehaviour
         // temp for testing
         PlayerHasControl = true;
     }
-
     public void SpawnPlayer()
     {
         if (PlayerObject != null)
         {
-            Destroy(PlayerObject);
+            PlayerObject.GetComponent<PlayerManager>().KillPlayer();
         }
 
         PlayerObject = Instantiate(playerPrefab, activeLevelManager.PlayerSpawnPosition(), Quaternion.identity);
         GetComponent<InputManager>().NewPlayerReference();
     }
-
+    public void GameOver()
+    {
+        sceneController.LoadScene(1);
+    }
+    public void ExitReached()
+    {
+        Debug.Log("Player reached exit!");
+        LoadNextScene();
+    }
     public void LoadNextScene()
     {
         sceneController.LoadScene(sceneController.CurrentScene() + 1);        
@@ -40,12 +47,14 @@ public class GameManager : MonoBehaviour
     {
         sceneController.LoadScene(sceneController.CurrentScene() - 1);        
     }
-    
+    public void LoadLastPlayedScene()
+    {
+        sceneController.LoadScene(sceneController.LastPlayedScene());
+    }
     private void FindLevelManager()
     {
         activeLevelManager = FindObjectOfType<LevelManager>();
     }
-
     private void FindSceneController()
     {
         sceneController = GetComponent<SceneController>();
@@ -55,15 +64,17 @@ public class GameManager : MonoBehaviour
         {
             LoadNextScene();
         }
-
     }
     public void SceneLoaded()
     {
         FindLevelManager();
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
     private void LoadResources()
     {
         playerPrefab = Resources.Load<GameObject>("Prefabs/Player");
     }
-
 }
