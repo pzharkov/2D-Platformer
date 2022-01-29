@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Level Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerManager.cs" />
+    <Compile Include="Assets\ProgressManager.cs" />
     <Compile Include="Assets\Scripts\Level Scripts\KillScreenTrigger.cs" />
     <Compile Include="Assets\Scripts\Support Classes\PersistentObject.cs" />
     <Compile Include="Assets\Scripts\Support Classes\GroundCheck.cs" />
@@ -64,12 +65,12 @@
     <Compile Include="Assets\Scripts\Game Manager Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\JumpSettings.cs" />
     <Compile Include="Assets\ExitTrigger.cs" />
+    <Compile Include="Assets\CollectTrigger.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\MenuInterface.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\InputManager.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\GameManager.cs" />
-    <Compile Include="Assets\CollectTrigger.cs" />
-    <Compile Include="Assets\ProgressManager.cs" />
+    <Compile Include="Assets\CollectibleItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

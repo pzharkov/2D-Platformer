@@ -8,17 +8,7 @@ public class CollectTrigger : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            ProgressManager progressManager = FindObjectOfType<ProgressManager>();
-
-            if (progressManager == null)
-            {
-                Debug.Log("CollectTrigger.OnTriggerenter2D: Progress Manager on object was not found!");
-                return;
-            }
-
-            progressManager.AddCurrency(1);
-
-            Destroy(transform.parent.gameObject);
+            GetComponentInParent<CollectibleItem>().Collected();
         }
     }
 }
