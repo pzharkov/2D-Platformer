@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log("Player died.");
         Destroy(gameObject);
-    }
+    }    
     private void GameOver()
     {
         FindGameManager();
