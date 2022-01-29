@@ -5,18 +5,28 @@ using UnityEngine;
 public class ProgressManager : MonoBehaviour
 {
     private int currency;
-    private int keyNumber;
+    private int keyCount;
+    private IngameUiManager ingameUi;
 
+    private void Start()
+    {
+        if (ingameUi == null)
+        {
+            ingameUi = FindObjectOfType<IngameUiManager>();
+        }
+    }
     public void AddCurrency(int amount)
     {
         currency += amount;
         // update UI
+        ingameUi.SetCurrencyAmount(currency);
         Debug.Log("Currency: " + currency);
     }
     public void AddKey()
     {
-        keyNumber++;
+        keyCount++;
         // update UI
-        Debug.Log("Keys: " + keyNumber);
+        ingameUi.SetKeyCount(keyCount);
+        Debug.Log("Keys: " + keyCount);
     }
 }

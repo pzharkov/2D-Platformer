@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Support Classes\PersistentObject.cs" />
     <Compile Include="Assets\Scripts\Support Classes\GroundCheck.cs" />
     <Compile Include="Assets\Scripts\Support Classes\GMTracker.cs" />
+    <Compile Include="Assets\CollectibleItem.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\TestManager.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\AudioManager.cs" />
@@ -70,7 +71,7 @@
     <Compile Include="Assets\Scripts\Game Manager Scripts\InputManager.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\GameManager.cs" />
-    <Compile Include="Assets\CollectibleItem.cs" />
+    <Compile Include="Assets\IngameUiManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
