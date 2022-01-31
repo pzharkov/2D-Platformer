@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Level Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerManager.cs" />
+    <Compile Include="Assets\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Enemy Scripts\LedgeCheck.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\ProgressManager.cs" />
     <Compile Include="Assets\Scripts\Level Scripts\KillScreenTrigger.cs" />
@@ -74,7 +75,7 @@
     <Compile Include="Assets\Scripts\Game Manager Scripts\InputManager.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\GameManager.cs" />
-    <Compile Include="Assets\PlayerStats.cs" />
+    <Compile Include="Assets\HealthBlock.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
