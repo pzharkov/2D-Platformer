@@ -11,10 +11,8 @@ public class HealthBlock : MonoBehaviour
     private Sprite emptyBlock;
     private Image imageComponent;
     [SerializeField]
-    private RectTransform rt;
-
-    [SerializeField]
-    private float standardSize;
+    private RectTransform rt;        
+    public float standardSize;
     [SerializeField]
     private float maxSize;
     [SerializeField]
@@ -22,10 +20,11 @@ public class HealthBlock : MonoBehaviour
 
     private void Start()
     {
-        imageComponent = GetComponentInChildren<Image>();
+        FindImageComponent();
     }
     public void Gain()
-    {        
+    {
+        FindImageComponent();
         imageComponent.sprite = fullBlock;
         StartCoroutine(PlayAnimation());
     }
@@ -42,6 +41,7 @@ public class HealthBlock : MonoBehaviour
     }
     public void Deplete()
     {
+        FindImageComponent();
         imageComponent.sprite = emptyBlock;
         StartCoroutine(PlayAnimation());
     }
@@ -60,5 +60,12 @@ public class HealthBlock : MonoBehaviour
         }
 
         rt.sizeDelta = new Vector2(standardSize, standardSize);        
+    }
+    private void FindImageComponent()
+    {
+        if (imageComponent == null)
+        {
+            imageComponent = GetComponentInChildren<Image>();
+        }
     }
 }

@@ -6,6 +6,8 @@ public class ProgressManager : MonoBehaviour
 {
     private int currency;
     private int keyCount;
+    [SerializeField]
+    private int maxHealth;
     private IngameUiManager ingameUi;
         
     public void AddCurrency(int amount)
@@ -17,7 +19,7 @@ public class ProgressManager : MonoBehaviour
     {
         keyCount++;        
         ingameUi.SetKeyCount(keyCount);
-    }
+    }    
     public void NewScene()
     {
         if (ingameUi == null)
@@ -33,5 +35,6 @@ public class ProgressManager : MonoBehaviour
     {
         currency = 0;
         keyCount = 0;
+        ingameUi.SetHealth(maxHealth);
     }
 }

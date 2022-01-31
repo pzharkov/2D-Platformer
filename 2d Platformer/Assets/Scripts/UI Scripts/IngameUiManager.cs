@@ -17,7 +17,13 @@ public class IngameUiManager : MonoBehaviour
     private float maxFontSize;
     private IEnumerator keyCoroutine = null;
     private IEnumerator currencyCoroutine;
+    [SerializeField]
+    private HealthUi healthUi;
 
+    private void Start()
+    {
+        healthUi = GetComponentInChildren<HealthUi>();
+    }
     public void SetKeyCount(int count)
     {
         keyText.SetText("" + count);
@@ -41,6 +47,10 @@ public class IngameUiManager : MonoBehaviour
 
         currencyCoroutine = CurrencyCountEffect();
         StartCoroutine(currencyCoroutine);
+    }
+    public void SetHealth(int health)
+    {
+        healthUi.SetMaxHealth(health);
     }
 
     private IEnumerator KeyCountEffect()
