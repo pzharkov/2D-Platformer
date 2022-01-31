@@ -7,26 +7,31 @@ public class ProgressManager : MonoBehaviour
     private int currency;
     private int keyCount;
     private IngameUiManager ingameUi;
-
-    private void Start()
+        
+    public void AddCurrency(int amount)
+    {
+        currency += amount;        
+        ingameUi.SetCurrencyAmount(currency);        
+    }
+    public void AddKey()
+    {
+        keyCount++;        
+        ingameUi.SetKeyCount(keyCount);
+    }
+    public void NewScene()
     {
         if (ingameUi == null)
         {
             ingameUi = FindObjectOfType<IngameUiManager>();
         }
+        if (GetComponent<SceneController>().CurrentScene() == 3)
+        {
+            ResetProgress();
+        }
     }
-    public void AddCurrency(int amount)
+    private void ResetProgress()
     {
-        currency += amount;
-        // update UI
-        ingameUi.SetCurrencyAmount(currency);
-        Debug.Log("Currency: " + currency);
-    }
-    public void AddKey()
-    {
-        keyCount++;
-        // update UI
-        ingameUi.SetKeyCount(keyCount);
-        Debug.Log("Keys: " + keyCount);
+        currency = 0;
+        keyCount = 0;
     }
 }

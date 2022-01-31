@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
     public void SceneLoaded()
     {
         FindLevelManager();
+        GetComponent<ProgressManager>().NewScene();
     }
     public void QuitGame()
     {
