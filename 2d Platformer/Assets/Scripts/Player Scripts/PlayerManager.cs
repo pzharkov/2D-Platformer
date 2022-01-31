@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     private GameManager gameManager = null;
+    public bool hasControl = true;
     public void PlayerEnteredKillScreen()
     {
         KillPlayer();
@@ -32,5 +33,28 @@ public class PlayerManager : MonoBehaviour
             return;
         }
         gameManager = FindObjectOfType<GameManager>();
+    }
+    public void DisableControl(bool permanent, float duration)
+    {
+        if (permanent)
+        {
+            hasControl = false;
+        }
+        else
+        {
+            StartCoroutine(LoseControlTimer(duration));
+        }
+    }
+    private IEnumerator LoseControlTimer(float duration)
+    {
+        hasControl = false;
+        float remainingTime = duration;
+
+        while (remainingTime > 0)
+        {
+            remainingTime -= Time.deltaTime;
+            yield return null;
+        }
+        hasControl = true;
     }
 }

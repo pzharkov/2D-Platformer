@@ -134,11 +134,13 @@ public class JumpSettings : MonoBehaviour
     {
         canJump = true;
         float _remainingTime = coyoteeTime;
+
         while (_remainingTime > 0f)
         {
             _remainingTime -= Time.deltaTime;
             yield return null;
         }
+
         canJump = false;
     }    
 
@@ -161,6 +163,7 @@ public class JumpSettings : MonoBehaviour
     private void PhysicsSetup()
     {
         rb = GetComponent<Rigidbody2D>();
+
         if (rb == null)
         {
             Debug.Log("PhysicsSetup() Error in " + this.name + ": RigidBody2D component on " + gameObject.name + " was not found!");
@@ -169,6 +172,7 @@ public class JumpSettings : MonoBehaviour
     private void GroundDetectionSetup()
     {
         groundCheck = GetComponentInChildren<GroundCheck>();
+
         if (groundCheck == null)
         {
             Debug.Log("GroundDetectionSetup Error in " + this.name + ": GroundCheck component on " + gameObject.name + " children was not found!");
