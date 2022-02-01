@@ -16,6 +16,22 @@ public class PlayerManager : MonoBehaviour
         FindGameManager();
         gameManager.ExitReached();
     }
+    public bool PlayerCanOpenDoor()
+    {
+        FindGameManager();
+        int keyCount = gameManager.GetComponent<ProgressManager>().KeyCount();
+
+        if (keyCount > 0)
+        {
+            gameManager.GetComponent<ProgressManager>().RemoveKey();
+            return true;
+        }
+        else
+        {
+            Debug.Log("Open door");
+            return false;
+        }
+    }
     public void KillPlayer()
     {
         Debug.Log("Player died.");

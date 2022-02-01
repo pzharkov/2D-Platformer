@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\TestManager.cs" />
+    <Compile Include="Assets\HealthUi.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\AudioManager.cs" />
     <Compile Include="Assets\HealthBlock.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\JumpSettings.cs" />
@@ -76,7 +77,8 @@
     <Compile Include="Assets\Scripts\Game Manager Scripts\InputManager.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\GameManager.cs" />
-    <Compile Include="Assets\HealthUi.cs" />
+    <Compile Include="Assets\DoorBehaviour.cs" />
+    <Compile Include="Assets\DoorTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

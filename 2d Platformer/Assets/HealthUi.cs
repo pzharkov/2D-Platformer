@@ -29,7 +29,6 @@ public class HealthUi : MonoBehaviour
         Vector2 currentPosition = new Vector2(transform.position.x + positionShift, transform.position.y - positionShift);
         for (int i = 0; i < health; i++)
         {
-            Debug.Log("Set health to " + i);
             // isntantiate new block at current position
             GameObject newBlock = Instantiate(healthBlockPrefab, currentPosition, Quaternion.identity);
             newBlock.transform.SetParent(gameObject.transform);

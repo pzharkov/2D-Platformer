@@ -19,7 +19,16 @@ public class ProgressManager : MonoBehaviour
     {
         keyCount++;        
         ingameUi.SetKeyCount(keyCount);
-    }    
+    }
+    public void RemoveKey()
+    {
+        keyCount--;
+        ingameUi.SetKeyCount(keyCount);
+    }
+    public int KeyCount()
+    {
+        return keyCount;
+    }
     public void NewScene()
     {
         if (ingameUi == null)
