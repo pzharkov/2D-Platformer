@@ -8,6 +8,7 @@ public class ProgressManager : MonoBehaviour
     private int keyCount;
     [SerializeField]
     private int maxHealth;
+    private int currentHealth;
     private IngameUiManager ingameUi;
         
     public void AddCurrency(int amount)
@@ -29,6 +30,10 @@ public class ProgressManager : MonoBehaviour
     {
         return keyCount;
     }
+    public int MaxHealth()
+    {
+        return maxHealth;
+    }
     public void NewScene()
     {
         if (ingameUi == null)
@@ -44,6 +49,12 @@ public class ProgressManager : MonoBehaviour
     {
         currency = 0;
         keyCount = 0;
-        ingameUi.SetHealth(maxHealth);
+        ingameUi.SetMaxHealth(maxHealth);
+        currentHealth = maxHealth;
+    }
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        ingameUi.SetHealth(currentHealth);
     }
 }

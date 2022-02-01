@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
-{
-    [SerializeField]
-    private int maxHealth;
+{    
     private int currentHealth;
     [SerializeField]
     private float invulnerabilityTime;
     private bool invulnerable;
     private PlayerController playerController = null;
+    private GameManager gameManager = null;
     private void Start()
     {
         if (playerController == null)
@@ -18,7 +17,12 @@ public class PlayerStats : MonoBehaviour
             playerController = GetComponent<PlayerController>();
         }
 
-        currentHealth = maxHealth;        
+        if (gameManager == null)
+        {
+            gameManager = FindObjectOfType<GameManager>();
+        }
+
+        currentHealth = gameManager.GetComponent<ProgressManager>().MaxHealth();
         invulnerable = false;
     }
     public void TakeDamage(int amount, Vector2 sourcePosition)
@@ -30,7 +34,7 @@ public class PlayerStats : MonoBehaviour
         else
         {
             currentHealth -= amount;
-            Debug.Log("Current health: " + currentHealth);
+            gameManager.GetComponent<ProgressManager>().TakeDamage(amount);
 
             if (currentHealth <= 0)
             {

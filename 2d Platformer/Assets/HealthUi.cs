@@ -22,6 +22,15 @@ public class HealthUi : MonoBehaviour
         currentHealth = health;
         StartCoroutine(SetMaxHealthCoroutine(health));
     }
+    public void SetHealth(int health)
+    {        
+        for (int i = currentHealth - 1; i >= health; i--)
+        {
+            healthBlocks[i].Deplete();
+        }
+
+        currentHealth = health;
+    }
 
     private IEnumerator SetMaxHealthCoroutine(int health)
     {
