@@ -6,7 +6,10 @@ public class EnemyBehaviour : MonoBehaviour
 {
     Rigidbody2D rb = null;
     private bool facingRight = true;
-    float direction = 3f;
+    [SerializeField]
+    private float speed = 3f;
+    [SerializeField]
+    private float explosionTime;
 
     private void Start()
     {
@@ -18,12 +21,12 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void Patrol()
     {
-        rb.velocity = new Vector2(direction, rb.velocity.y);
+        rb.velocity = new Vector2(speed, rb.velocity.y);
     }
 
     public void Flip()
     {        
-        direction *= -1;
+        speed *= -1;
 
         if (facingRight)
         {
@@ -35,5 +38,36 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
         facingRight = !facingRight;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Bomb")
+        {
+            Destroy(collision.transform.parent.gameObject);
+            if (GetComponent<ProjectileSpawner>() != null)
+            {
+                GetComponent<ProjectileSpawner>().IsDead();
+            }
+            StartCoroutine(Explode());
+        }
+    }
+    private IEnumerator Explode()
+    {
+        float remainingTime = explosionTime;
+        
+        SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.color = Color.white;
+
+        while (remainingTime > 0f)
+        {
+            remainingTime -= Time.deltaTime;            
+
+            float progress = remainingTime / explosionTime;
+            spriteRenderer.color = new Color(1f, 1f, 1f, progress);
+
+            yield return null;
+        }
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }
