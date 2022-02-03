@@ -10,15 +10,15 @@ public class ProgressManager : MonoBehaviour
     private int maxHealth;
     private int currentHealth;
     private IngameUiManager ingameUi;
-        
+
     public void AddCurrency(int amount)
     {
-        currency += amount;        
-        ingameUi.SetCurrencyAmount(currency);        
+        currency += amount;
+        ingameUi.SetCurrencyAmount(currency);
     }
     public void AddKey()
     {
-        keyCount++;        
+        keyCount++;
         ingameUi.SetKeyCount(keyCount);
     }
     public void RemoveKey()
@@ -44,6 +44,10 @@ public class ProgressManager : MonoBehaviour
         {
             ResetProgress();
         }
+        else if (GetComponent<SceneController>().CurrentScene() > 3)
+        {
+            MaintainProgress();
+        }
     }
     private void ResetProgress()
     {
@@ -52,6 +56,13 @@ public class ProgressManager : MonoBehaviour
         ingameUi.SetMaxHealth(maxHealth);
         currentHealth = maxHealth;
     }
+    private void MaintainProgress()
+    {
+        ingameUi.SetMaxHealth(currentHealth);
+        ingameUi.SetHealth(currentHealth);
+        ingameUi.SetCurrencyAmount(currency);
+        ingameUi.SetKeyCount(keyCount);
+    }    
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;

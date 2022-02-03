@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
-{    
-    private GameObject playerPrefab = null;    
-    public GameObject PlayerObject { get; private set; }
+{
+    [SerializeField]
+    private GameObject playerPrefab = null;
+    public GameObject playerObject;
     [SerializeField]
     private SceneController sceneController = null;
     [SerializeField]
@@ -22,13 +23,13 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnPlayer()
     {
-        if (PlayerObject != null)
+        if (playerObject != null)
         {
-            PlayerObject.GetComponent<PlayerManager>().KillPlayer();
+            playerObject.GetComponent<PlayerManager>().KillPlayer();
         }
 
-        PlayerObject = Instantiate(playerPrefab, activeLevelManager.PlayerSpawnPosition(), Quaternion.identity);
-        GetComponent<InputManager>().NewPlayerReference();
+        playerObject = Instantiate(playerPrefab, activeLevelManager.PlayerSpawnPosition(), Quaternion.identity);
+        GetComponent<InputManager>().NewPlayerReference(playerObject.GetComponent<PlayerController>());
     }
     public void GameOver()
     {
@@ -57,7 +58,10 @@ public class GameManager : MonoBehaviour
     }
     private void FindSceneController()
     {
-        sceneController = GetComponent<SceneController>();
+        if (sceneController == null)
+        {
+            sceneController = GetComponent<SceneController>();
+        }        
 
         // check if in Zero (pre-load scene) and load next scene if so
         if (sceneController.CurrentScene() == 0)
@@ -68,7 +72,13 @@ public class GameManager : MonoBehaviour
     public void SceneLoaded()
     {
         FindLevelManager();
+        FindSceneController();
         GetComponent<ProgressManager>().NewScene();
+        
+        if (sceneController.CurrentScene() > 2)
+        {
+            SpawnPlayer();
+        }
     }
     public void QuitGame()
     {

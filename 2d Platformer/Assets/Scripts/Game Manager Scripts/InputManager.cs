@@ -7,8 +7,9 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private TestManager testManager = null;
     private GameManager gameManager = null;
-    private bool testingMode;
-    private bool menuMode;
+    private bool testingMode = false;
+    private bool menuMode = false;
+    [SerializeField]
     private PlayerController playerController = null;
 
     // Start is called before the first frame update
@@ -70,7 +71,7 @@ public class InputManager : MonoBehaviour
     }
     private void ReadPlayerInput()
     {
-        if (gameManager.PlayerObject != null)
+        if (gameManager.playerObject != null)
         {
             int _horizontalInput = (int)Input.GetAxisRaw("Horizontal");
             playerController.HorizontalMovement(_horizontalInput);
@@ -99,11 +100,8 @@ public class InputManager : MonoBehaviour
         testManager.LoadPreviousScene();
     }
 
-    public void NewPlayerReference()
+    public void NewPlayerReference(PlayerController _playerController)
     {
-        if (gameManager.PlayerObject != null)
-        {
-            playerController = gameManager.PlayerObject.GetComponent<PlayerController>();
-        }
+        playerController = _playerController;
     }
 }
