@@ -54,13 +54,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Level Scripts\LevelManager.cs" />
-    <Compile Include="Assets\DoorTrigger.cs" />
+    <Compile Include="Assets\Scripts\Level Scripts\DoorTrigger.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerManager.cs" />
-    <Compile Include="Assets\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Enemy Scripts\LedgeCheck.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\ProgressManager.cs" />
     <Compile Include="Assets\Scripts\Level Scripts\KillScreenTrigger.cs" />
     <Compile Include="Assets\Scripts\Support Classes\PersistentObject.cs" />
+    <Compile Include="Assets\Scripts\Enemy Scripts\KeyProjectile.cs" />
     <Compile Include="Assets\Scripts\Support Classes\GroundCheck.cs" />
     <Compile Include="Assets\Scripts\Support Classes\GMTracker.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\IngameUiManager.cs" />
@@ -68,20 +69,21 @@
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\TestManager.cs" />
-    <Compile Include="Assets\HealthUi.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\HealthUi.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\AudioManager.cs" />
-    <Compile Include="Assets\HealthBlock.cs" />
-    <Compile Include="Assets\DoorBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Enemy Scripts\EnemyProjectile.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\HealthBlock.cs" />
+    <Compile Include="Assets\Scripts\Level Scripts\DoorBehaviour.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\JumpSettings.cs" />
     <Compile Include="Assets\Scripts\Level Scripts\ExitTrigger.cs" />
     <Compile Include="Assets\Scripts\Interractible Objects Scripts\CollectTrigger.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\MenuInterface.cs" />
+    <Compile Include="Assets\Scripts\Support Classes\Progress.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\InputManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy Scripts\ProjectileSpawner.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\GameManager.cs" />
-    <Compile Include="Assets\EnemyProjectile.cs" />
-    <Compile Include="Assets\ProjectileSpawner.cs" />
-    <Compile Include="Assets\KeyProjectile.cs" />
+    <Compile Include="Assets\Scripts\Enemy Scripts\WallCheck.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

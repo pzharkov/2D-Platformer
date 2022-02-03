@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     }
     public void ExitReached()
     {
-        Debug.Log("Player reached exit!");
+        GetComponent<ProgressManager>().SaveProgress();
         LoadNextScene();
     }
     public void LoadNextScene()

@@ -23,7 +23,6 @@ public class SceneController : MonoBehaviour
         if (_index > 0 && _index < sceneCount)
         {
             lastPlayedSceneIndex = CurrentScene();
-            Debug.Log("Last Played Scene Index =  " + lastPlayedSceneIndex);
             StartCoroutine(LoadSceneByIndex(_index));
         }
         else

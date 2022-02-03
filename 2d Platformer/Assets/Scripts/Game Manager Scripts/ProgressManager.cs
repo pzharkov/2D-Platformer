@@ -4,35 +4,35 @@ using UnityEngine;
 
 public class ProgressManager : MonoBehaviour
 {
-    private int currency;
-    private int keyCount;
-    [SerializeField]
-    private int maxHealth;
-    private int currentHealth;
     private IngameUiManager ingameUi;
-
+    public Progress currentProgress;
+    public Progress savedProgress;
     public void AddCurrency(int amount)
     {
-        currency += amount;
-        ingameUi.SetCurrencyAmount(currency);
-    }
+        currentProgress.currency += amount;
+        ingameUi.SetCurrencyAmount(currentProgress.currency);
+    }    
     public void AddKey()
     {
-        keyCount++;
-        ingameUi.SetKeyCount(keyCount);
+        currentProgress.keys++;
+        ingameUi.SetKeyCount(currentProgress.keys);
     }
     public void RemoveKey()
     {
-        keyCount--;
-        ingameUi.SetKeyCount(keyCount);
+        currentProgress.keys--;
+        ingameUi.SetKeyCount(currentProgress.keys);
     }
     public int KeyCount()
     {
-        return keyCount;
+        return currentProgress.keys;
     }
     public int MaxHealth()
     {
-        return maxHealth;
+        return currentProgress.maxHealth;
+    }
+    public void SaveProgress()
+    {
+        savedProgress = currentProgress;
     }
     public void NewScene()
     {
@@ -51,21 +51,21 @@ public class ProgressManager : MonoBehaviour
     }
     private void ResetProgress()
     {
-        currency = 0;
-        keyCount = 0;
-        ingameUi.SetMaxHealth(maxHealth);
-        currentHealth = maxHealth;
+        savedProgress = new Progress(5, 5, 0, 0);
+        currentProgress = savedProgress;
+        ingameUi.SetMaxHealth(currentProgress.maxHealth);        
     }
     private void MaintainProgress()
     {
-        ingameUi.SetMaxHealth(currentHealth);
-        ingameUi.SetHealth(currentHealth);
-        ingameUi.SetCurrencyAmount(currency);
-        ingameUi.SetKeyCount(keyCount);
+        currentProgress = savedProgress;
+        ingameUi.SetMaxHealth(currentProgress.maxHealth);
+        ingameUi.SetHealth(currentProgress.health);
+        ingameUi.SetCurrencyAmount(currentProgress.currency);
+        ingameUi.SetKeyCount(currentProgress.keys);
     }    
     public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
-        ingameUi.SetHealth(currentHealth);
+        currentProgress.health -= amount;
+        ingameUi.SetHealth(currentProgress.health);
     }
 }
