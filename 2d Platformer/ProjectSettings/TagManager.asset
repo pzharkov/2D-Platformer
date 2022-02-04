@@ -9,6 +9,7 @@ TagManager:
   - Exit
   - EnemyDamage
   - Bomb
+  - Ceiling
   layers:
   - Default
   - TransparentFX
@@ -22,8 +23,8 @@ TagManager:
   - PlayerTrigger
   - TriggerScreen
   - EnemyCollider
-  - 
-  - 
+  - CeilingTrigger
+  - CeilingCheck
   - 
   - 
   - 

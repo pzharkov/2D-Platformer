@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Support Classes\GMTracker.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\IngameUiManager.cs" />
     <Compile Include="Assets\Scripts\Interractible Objects Scripts\CollectibleItem.cs" />
+    <Compile Include="Assets\Scripts\Enemy Scripts\WallCheck.cs" />
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\TestManager.cs" />
@@ -83,7 +84,7 @@
     <Compile Include="Assets\Scripts\Enemy Scripts\ProjectileSpawner.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Enemy Scripts\WallCheck.cs" />
+    <Compile Include="Assets\CeilingCheck.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

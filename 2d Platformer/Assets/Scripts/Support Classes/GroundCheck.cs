@@ -18,11 +18,14 @@ public class GroundCheck : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
-            isGrounded = true;
+            if (!isGrounded)
+            {                
+                isGrounded = true;
+            }
             BelongsToPlayerCheck();
         }
     }
@@ -31,7 +34,10 @@ public class GroundCheck : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            isGrounded = false;                        
+            if (isGrounded)
+            {                
+                isGrounded = false;
+            }
             BelongsToPlayerCheck();
         }
     }

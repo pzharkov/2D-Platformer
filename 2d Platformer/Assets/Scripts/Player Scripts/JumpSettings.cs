@@ -101,6 +101,7 @@ public class JumpSettings : MonoBehaviour
         {
             StopCoroutine(jumpCoroutine);            
         }
+        
         if (!groundCheck.isGrounded)
         {
             rb.gravityScale = fallGravityScale;
