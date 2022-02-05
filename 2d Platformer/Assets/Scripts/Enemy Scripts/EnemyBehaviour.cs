@@ -53,6 +53,11 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private IEnumerator Explode()
     {
+        if (GetComponent<Dependencies>() != null)
+        {
+            GetComponent<Dependencies>().DestroyDependencies();
+        }
+
         float remainingTime = explosionTime;
         
         SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -67,6 +72,9 @@ public class EnemyBehaviour : MonoBehaviour
 
             yield return null;
         }
+
+        
+
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }

@@ -13,6 +13,11 @@ public class KeyProjectile : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        if (transform.rotation.y == 1)
+        {
+            speed *= -1f;
+        }
     }
     private void FixedUpdate()
     {

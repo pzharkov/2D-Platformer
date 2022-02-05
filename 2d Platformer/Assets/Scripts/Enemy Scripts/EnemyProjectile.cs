@@ -14,6 +14,11 @@ public class EnemyProjectile : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        if (transform.rotation.y == 1)
+        {
+            projectileSpeed *= -1f;
+        }
     }
 
     private void FixedUpdate()

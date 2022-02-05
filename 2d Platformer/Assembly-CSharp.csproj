@@ -79,12 +79,13 @@
     <Compile Include="Assets\Scripts\Level Scripts\ExitTrigger.cs" />
     <Compile Include="Assets\Scripts\Interractible Objects Scripts\CollectTrigger.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\MenuInterface.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\CeilingCheck.cs" />
     <Compile Include="Assets\Scripts\Support Classes\Progress.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\InputManager.cs" />
     <Compile Include="Assets\Scripts\Enemy Scripts\ProjectileSpawner.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\GameManager.cs" />
-    <Compile Include="Assets\CeilingCheck.cs" />
+    <Compile Include="Assets\Scripts\Support Classes\Dependencies.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
