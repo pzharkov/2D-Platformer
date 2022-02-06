@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderObject: {fileID: 889773778316340135}
+  triggerObject: {fileID: 889773778360442226}
   doorDisappearTime: 2
   lockDisappearTime: 0.2
   sprite: {fileID: 889773779333258796}
