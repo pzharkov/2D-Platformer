@@ -17,12 +17,12 @@ public class HealthUi : MonoBehaviour
     {
         positionShift = healthBlockPrefab.GetComponent<HealthBlock>().standardSize * 1.5f;
     }
-    public void SetMaxHealth(int health)
+    public void SetHealthTo(int max, int current)
     {
-        currentHealth = health;
-        StartCoroutine(SetMaxHealthCoroutine(health));
+        currentHealth = current;
+        StartCoroutine(SetHealthCoroutine(max, current));
     }
-    public void SetHealth(int health)
+    public void ReduceHealthTo(int health)
     {        
         for (int i = currentHealth - 1; i >= health; i--)
         {
@@ -32,21 +32,28 @@ public class HealthUi : MonoBehaviour
         currentHealth = health;
     }
 
-    private IEnumerator SetMaxHealthCoroutine(int health)
+    private IEnumerator SetHealthCoroutine(int max, int current)
     {
-        healthBlocks = new HealthBlock[health];
+        healthBlocks = new HealthBlock[max];
         Vector2 currentPosition = new Vector2(transform.position.x + positionShift, transform.position.y - positionShift);
-        for (int i = 0; i < health; i++)
+        for (int i = 0; i < max; i++)
         {
             // isntantiate new block at current position
             GameObject newBlock = Instantiate(healthBlockPrefab, currentPosition, Quaternion.identity);
             newBlock.transform.SetParent(gameObject.transform);
             healthBlocks[i] = newBlock.GetComponent<HealthBlock>();
-            healthBlocks[i].Gain();
 
             // define new position
-            currentPosition = new Vector2(currentPosition.x + positionShift, currentPosition.y);            
-
+            currentPosition = new Vector2(currentPosition.x + positionShift, currentPosition.y);
+        }
+        for (int i = 0; i < current; i++)
+        {
+            healthBlocks[i].Gain();
+            yield return new WaitForSeconds(instantiationDelay);
+        }
+        for (int i = current; i < max; i++)
+        {
+            healthBlocks[i].Deplete();
             yield return new WaitForSeconds(instantiationDelay);
         }
     }

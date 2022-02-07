@@ -53,19 +53,18 @@ public class ProgressManager : MonoBehaviour
     {
         savedProgress = new Progress(5, 5, 0, 0);
         currentProgress = savedProgress;
-        ingameUi.SetMaxHealth(currentProgress.maxHealth);        
+        ingameUi.SetHealthTo(currentProgress.maxHealth, currentProgress.maxHealth);        
     }
     private void MaintainProgress()
     {
         currentProgress = savedProgress;
-        ingameUi.SetMaxHealth(currentProgress.maxHealth);
-        ingameUi.SetHealth(currentProgress.health);
+        ingameUi.SetHealthTo(currentProgress.maxHealth, currentProgress.health);        
         ingameUi.SetCurrencyAmount(currentProgress.currency);
         ingameUi.SetKeyCount(currentProgress.keys);
     }    
     public void TakeDamage(int amount)
     {
         currentProgress.health -= amount;
-        ingameUi.SetHealth(currentProgress.health);
+        ingameUi.ReduceHealthTo(currentProgress.health);
     }
 }

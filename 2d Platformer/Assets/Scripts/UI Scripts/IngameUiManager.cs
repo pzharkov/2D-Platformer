@@ -48,13 +48,13 @@ public class IngameUiManager : MonoBehaviour
         currencyCoroutine = CurrencyCountEffect();
         StartCoroutine(currencyCoroutine);
     }
-    public void SetMaxHealth(int health)
+    public void SetHealthTo(int max, int current)
     {
-        healthUi.SetMaxHealth(health);
+        healthUi.SetHealthTo(max, current);
     }
-    public void SetHealth(int health)
+    public void ReduceHealthTo(int health)
     {
-        healthUi.SetHealth(health);
+        healthUi.ReduceHealthTo(health);
     }
 
     private IEnumerator KeyCountEffect()
