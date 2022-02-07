@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Game Manager Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyProjectile.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\HealthBlock.cs" />
+    <Compile Include="Assets\Scripts\Support Classes\Dependencies.cs" />
     <Compile Include="Assets\Scripts\Level Scripts\DoorBehaviour.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\JumpSettings.cs" />
     <Compile Include="Assets\Scripts\Level Scripts\ExitTrigger.cs" />
@@ -85,7 +86,7 @@
     <Compile Include="Assets\Scripts\Enemy Scripts\ProjectileSpawner.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\Game Manager Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Support Classes\Dependencies.cs" />
+    <Compile Include="Assets\FinalLevelEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

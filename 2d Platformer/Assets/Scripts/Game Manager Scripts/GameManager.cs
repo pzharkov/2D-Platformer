@@ -7,10 +7,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject playerPrefab = null;
     public GameObject playerObject;
+    public GameObject playerDummy;
     [SerializeField]
     private SceneController sceneController = null;
     [SerializeField]
-    private LevelManager activeLevelManager = null;    
+    private LevelManager activeLevelManager = null;
     public bool PlayerHasControl { get; private set; }
 
     void Start()
@@ -34,6 +35,20 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         sceneController.LoadScene(1);
+    }
+
+    public void GameComplete()
+    {
+        GameObject _dummy = Instantiate(playerDummy, playerObject.transform.position, Quaternion.identity);
+        playerObject.SetActive(false);
+        StartCoroutine(FinishGame());
+
+    }
+    private IEnumerator FinishGame()
+    {        
+        yield return new WaitForSeconds(3f);
+        // main menu
+        sceneController.LoadScene(2);
     }
     public void ExitReached()
     {
@@ -87,5 +102,6 @@ public class GameManager : MonoBehaviour
     private void LoadResources()
     {
         playerPrefab = Resources.Load<GameObject>("Prefabs/Player");
+        playerDummy = Resources.Load<GameObject>("Prefabs/PlayerDummy");
     }
 }
