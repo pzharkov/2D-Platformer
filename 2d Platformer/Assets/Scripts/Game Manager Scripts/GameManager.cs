@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     {        
         yield return new WaitForSeconds(3f);
         // main menu
-        sceneController.LoadScene(2);
+        sceneController.GameComplete();
     }
     public void ExitReached()
     {

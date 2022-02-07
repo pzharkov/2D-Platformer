@@ -8,6 +8,7 @@ public class SceneController : MonoBehaviour
     private int sceneCount = 0;    
     private int lastPlayedSceneIndex = 2; // set to 2 (Main Menu scene) by default
     private GameManager gameManager = null;
+    bool newGame = true;
 
     void Start()
     {
@@ -15,19 +16,27 @@ public class SceneController : MonoBehaviour
         {
             gameManager = GetComponent<GameManager>();            
         }
-        sceneCount = SceneManager.sceneCountInBuildSettings;
+        sceneCount = SceneManager.sceneCountInBuildSettings;        
     }
 
     public void LoadScene(int _index)
     {
-        if (_index > 0 && _index < sceneCount)
+        if (newGame)
         {
-            lastPlayedSceneIndex = CurrentScene();
-            StartCoroutine(LoadSceneByIndex(_index));
+            newGame = false;
+            StartCoroutine(LoadSceneByIndex(2));
         }
         else
         {
-            Debug.Log("Error: scene index called is outside of acceptable range 0 < " + _index + " < " + sceneCount);
+            if (_index > 0 && _index < sceneCount)
+            {
+                lastPlayedSceneIndex = CurrentScene();
+                StartCoroutine(LoadSceneByIndex(_index));
+            }
+            else
+            {
+                Debug.Log("Error: scene index called is outside of acceptable range 0 < " + _index + " < " + sceneCount);
+            }
         }        
     }
 
@@ -50,5 +59,10 @@ public class SceneController : MonoBehaviour
     public int LastPlayedScene()
     {
         return lastPlayedSceneIndex;
+    }
+    public void GameComplete()
+    {
+        newGame = true;
+        LoadScene(2);
     }
 }
