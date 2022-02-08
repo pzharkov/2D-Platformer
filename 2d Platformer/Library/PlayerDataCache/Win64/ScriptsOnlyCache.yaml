@@ -38,6 +38,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -1336,7 +1337,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: 4be224e91b2227eeae2fdc5564e4bcae
+      Hash: 14346ec2b73f7ed7bc16de4a7ac30270
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyBehaviour

@@ -312,6 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   explosionTime: 3
+  damageBox: {fileID: 3144715715162675463}
 --- !u!114 &3144715715805011436
 MonoBehaviour:
   m_ObjectHideFlags: 0

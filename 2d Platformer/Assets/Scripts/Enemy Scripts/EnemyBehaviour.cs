@@ -10,6 +10,8 @@ public class EnemyBehaviour : MonoBehaviour
     private float speed = 3f;
     [SerializeField]
     private float explosionTime;
+    [SerializeField]
+    private GameObject damageBox;
 
     private void Start()
     {
@@ -48,6 +50,7 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 GetComponent<ProjectileSpawner>().IsDead();
             }
+            damageBox.SetActive(false);
             StartCoroutine(Explode());
         }
     }
