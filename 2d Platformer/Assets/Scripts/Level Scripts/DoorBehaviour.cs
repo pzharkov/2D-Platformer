@@ -9,6 +9,8 @@ public class DoorBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject triggerObject;
     [SerializeField]
+    private GameObject groundTriggerObject;
+    [SerializeField]
     private float doorDisappearTime;
     [SerializeField]
     private float lockDisappearTime;
@@ -31,6 +33,10 @@ public class DoorBehaviour : MonoBehaviour
     {
         colliderObject.SetActive(false);
         triggerObject.SetActive(false);
+        if (groundTriggerObject != null)
+        {
+            groundTriggerObject.SetActive(false);
+        }        
         
         StartCoroutine(Disappear());
         StartCoroutine(LockDisappear());
